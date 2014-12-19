@@ -38,7 +38,7 @@ gem 'spring',        group: :development
 # Use debugger
 # gem 'debugger', group: [:development, :test]
 
-gem "activeadmin", github: "gregbell/activeadmin"
+gem "activeadmin", github: 'activeadmin'
 gem "devise"
 
 group :development do
