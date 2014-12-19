@@ -16,6 +16,7 @@ module API
         get "id", root: "contact" do
           Contact.where(id: permitted_params[:id]).first!
         end
+        
       end
     end
   end
