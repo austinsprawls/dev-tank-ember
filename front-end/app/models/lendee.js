@@ -11,5 +11,7 @@ export default DS.Model.extend({
   zipCode: DS.attr('string'),
   dateOfBirth: DS.attr('date'),
   yearlyIndividualIncome: DS.attr(),
-  yearlyAdditionalIncome: DS.attr()
+  yearlyAdditionalIncome: DS.attr(),
+  payments: DS.hasMany('payment', {async: true}),
+  investments: DS.hasMany('investment', {async: true})
 });
