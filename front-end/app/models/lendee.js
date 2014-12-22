@@ -13,5 +13,7 @@ export default DS.Model.extend({
   yearlyIndividualIncome: DS.attr(),
   yearlyAdditionalIncome: DS.attr(),
   payments: DS.hasMany('payment', {async: true}),
-  investments: DS.hasMany('investment', {async: true})
+  investments: DS.hasMany('investment', {async: true}),
+  createdAt: DS.attr('date'),
+  updatedAt: DS.attr('date')
 });

@@ -8,5 +8,7 @@ export default DS.Model.extend({
   funds: DS.attr({defaultValue: 0.0}),
   totalInvested: DS.attr({defaultValue: 0.0}),
   investments: DS.hasMany('investment', {async: true}),
-  payments: DS.hasMany('payment', {async: true})
+  payments: DS.hasMany('payment', {async: true}),
+  createdAt: DS.attr('date'),
+  updatedAt: DS.attr('date')
 });
