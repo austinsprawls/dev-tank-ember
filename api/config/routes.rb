@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  devise_for :lenders
   devise_for :lendees
   mount API::Base, at: "/"
   mount GrapeSwaggerRails::Engine, at: "/documentation"
