@@ -1,0 +1,29 @@
+Project Name: Dev_Tank
+
+  Features:
+    *Authorization
+    *CRUD crowd-lending platform
+
+  Authorization:
+    *ember-cli simple-auth/ember-cli simple-auth-devise
+    *Email/Password/Password Confirmation
+
+  CRUD crowd-lending platform:
+    *allow lendee to create loan
+    *allow lender to fund(update) loan
+    *allow lendee & lender to read loans/investments
+    *allow lender to read & sort all loans
+    *allow lendee to make payments toward investments
+    *allow lendee to destroy loan in progress
+
+  Stack:
+    *Ember (CLI) for front-end
+    *Rails API using postgresql for backend
+    *QUnit for testing
+    *Bootstrap for design
+
+  Constraints:
+    *Don't use Ember Data for final project
+    *Backend not fully developed/only mockup
+    *Authorize lender before viewing all loans
+    *Authorize lendee before creating loan
