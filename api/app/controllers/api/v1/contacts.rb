@@ -13,10 +13,10 @@ module API
         params do
           requires :id, type: String, desc: "ID of the contact"
         end
-        get "id", root: "contact" do
+        get ":id", root: "contact" do
           Contact.where(id: permitted_params[:id]).first!
         end
-        
+
       end
     end
   end

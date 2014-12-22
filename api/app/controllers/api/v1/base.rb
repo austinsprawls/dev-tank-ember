@@ -5,6 +5,8 @@ module API
     class Base < Grape::API
       mount API::V1::Contacts
       # mount API::V1::AnotherResource
+      mount API::V1::Lendees
+      mount API::V1::Lenders
 
       add_swagger_documentation(
         api_version: "v1",
