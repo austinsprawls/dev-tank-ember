@@ -5,6 +5,7 @@ export default DS.Model.extend({
   lastName: DS.attr('string'),
   email: DS.attr('string'),
   password: DS.attr('string'),
+  passwordConfirmation: DS.attr('string'),
   streetAddress: DS.attr('string'),
   city: DS.attr('string'),
   state: DS.attr('string'),
@@ -12,8 +13,9 @@ export default DS.Model.extend({
   dateOfBirth: DS.attr('date'),
   yearlyIndividualIncome: DS.attr(),
   yearlyAdditionalIncome: DS.attr(),
+  creditRange: DS.attr('string'),
   payments: DS.hasMany('payment', {async: true}),
   investments: DS.hasMany('investment', {async: true}),
-  createdAt: DS.attr('date'),
-  updatedAt: DS.attr('date')
+  createdAt: DS.attr('Date'),
+  updatedAt: DS.attr('Date')
 });
