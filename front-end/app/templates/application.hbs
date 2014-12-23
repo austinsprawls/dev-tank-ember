@@ -1,5 +1,11 @@
 <h2 id='title'>Biznz</h2>
 
+{{#if session.isAuthenticated}}
+<a {{ action 'invalidateSession' }}>Logout</a>
+{{else}}
+<a {{ action 'authenticateSession' }}>Login</a>
+{{/if}}
+
 <ul>
   <li>{{#link-to 'index'}}Home{{/link-to}}</li>
   <li>"{{#link-to 'contacts'}}Contacts{{/link-to}}"</li>
