@@ -28,6 +28,10 @@ module.exports = function(environment) {
   }
 
   if (environment === 'test') {
+
+    ENV['simple-auth'] = {
+      store: 'simple-auth-session-store:ephemeral'
+    };
     // Testem prefers this...
     ENV.baseURL = '/';
     ENV.locationType = 'none';
@@ -40,7 +44,9 @@ module.exports = function(environment) {
   }
 
   if (environment === 'production') {
-
+    ENV['simple-auth'] = {
+      serverTokenRevocationEndpoint: '/revoke'
+    };
   }
 
   return ENV;

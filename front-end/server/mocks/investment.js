@@ -2,6 +2,8 @@ module.exports = function(app) {
   var express = require('express');
   var investmentRouter = express.Router();
 
+
+
   investmentRouter.get('/', function(req, res) {
     res.send({
       "investment": []
