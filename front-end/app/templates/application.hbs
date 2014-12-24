@@ -8,7 +8,7 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="#">dev_tank</a>
+      {{#link-to 'index' class="navbar-brand"}}dev_tank{{/link-to}}
     </div>
 
     <!-- Collect the nav links, forms, and other content for toggling -->
@@ -38,7 +38,4 @@
   </div><!-- /.container-fluid -->
 </nav>
 
-<div class="container">
-
-  {{outlet}}
-</div>
+{{outlet}}
