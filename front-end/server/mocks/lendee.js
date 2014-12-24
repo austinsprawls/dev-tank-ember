@@ -13,19 +13,6 @@ module.exports = function(app) {
     }
   };
 
-  var server = new Pretender(function(){
-    this.get('/photos', function(request){
-      var all =  JSON.stringify(Object.keys(PHOTOS).map(function(k){return PHOTOS[k]}))
-      return [200, {"Content-Type": "application/json"}, all]
-    });
-
-    this.get('/photos/:id', function(request){
-      return [200, {"Content-Type": "application/json"}, JSON.stringify(PHOTOS[request.params.id])]
-    });
-  });
-
-  $.get('/photos/12', {success: function(){ ... }})
-
   lendeeRouter.get('/', function(req, res) {
     res.send({
       "lendee": []
