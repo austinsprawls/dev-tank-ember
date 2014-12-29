@@ -16,6 +16,14 @@ module API
         desc "Return all investments belonging to specified lender"
         params do
           requires :lender_id, type: String, desc: "ID of the lender"
+        end
+        get ":lender_id/investments", root: "investment" do
+          Investment.where(lender_id: permitted_params[:lender_id])
+        end
+
+        desc "Return single investment belonging to specified lender"
+        params do
+          requires :lender_id, type: String, desc: "ID of the lender"
           requires :id, type: String, desc: "ID of the investment"
         end
         get ":lender_id/investments/:id", root: "investment" do
