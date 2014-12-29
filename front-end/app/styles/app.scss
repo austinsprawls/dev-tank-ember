@@ -2,15 +2,13 @@
 
 .navbar {
   margin-bottom: 0;
+  height: 75px;
+  background-color: #fff;
 }
 
 body {
   margin: 0;
   padding: 0;
-  /*  Background fallback in case of IE8 & down, or in case video doens't load, such as with slower connections  */
-  background: url(http://mattgrossdesign.com/raw-media/first-frame-screencap.jpg) #333;
-  background-attachment: fixed;
-  background-size: cover;
 }
 
 #video-background {
@@ -23,6 +21,10 @@ body {
   width: auto;
   height: auto;
   z-index: -100;
+}
+
+#check-rate-form {
+  margin-top: 25%;
 }
 
 .headline, .subheadline {
