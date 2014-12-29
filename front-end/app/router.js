@@ -19,10 +19,10 @@ Router.map(function() {
   });
 
   this.resource('lender', { path: 'lenders/:lender_id' });
-  this.resource('lender.payments', {path: '/payments'}, function(){
+  this.resource('lender.payments', {path: '/lenders/:lender_id/payments'}, function(){
     this.resource('lender.payment', {path: '/:payment_id'});
   });
-  this.resource('lender.investments', {path: '/investments'}, function(){
+  this.resource('lender.investments', {path: '/lenders/:lender_id/investments'}, function(){
     this.resource('lender.investment', {path: '/:investment_id'});
   });
 });
