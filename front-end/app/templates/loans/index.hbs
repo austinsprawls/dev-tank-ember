@@ -1,0 +1,11 @@
+{{#each}}
+  <li>
+    {{#link-to 'loan' this}}
+      {{amountRequested}}
+    {{/link-to}}
+  </li>
+{{else}}
+  <h2>There are no notes to browse at this time</h2>
+{{/each}}
+
+{{outlet}}
