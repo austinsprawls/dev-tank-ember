@@ -8,8 +8,6 @@ module API
       mount API::V1::Lendees
       mount API::V1::Lenders
       mount API::V1::Loans
-      mount API::V1::Investments
-      mount API::V1::Payments
 
       add_swagger_documentation(
         api_version: "v1",
