@@ -1,4 +1,12 @@
 FactoryGirl.define do
+
+  factory :investment do
+    lender
+    loan
+    amount {Faker::Commerce.price}
+    expected_return {Faker::Commerce.price}
+  end
+
   factory :lender do
     email {Faker::Internet.email}
     password {"password"}
@@ -11,7 +19,7 @@ FactoryGirl.define do
         investments_count 5
       end
 
-      after(:create) do |user, evaluator|
+      after(:create) do |lender, evaluator|
         create_list(:investment, evaluator.investments_count, lender: lender)
       end
     end
