@@ -136,7 +136,7 @@ ActiveRecord::Schema.define(version: 20141222175722) do
     t.integer  "months_paid", default: 0
     t.float    "amount_paid", default: 0.0
     t.boolean  "paid?",       default: false
-    t.date     "due_date",    default: '2015-01-22'
+    t.date     "due_date",    default: '2015-01-29'
     t.datetime "created_at"
     t.datetime "updated_at"
   end
