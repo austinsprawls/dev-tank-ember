@@ -8,9 +8,7 @@ var Lender = DS.Model.extend({
   funds: DS.attr({defaultValue: 0.0}),
   totalInvested: DS.attr({defaultValue: 0.0}),
   investments: DS.hasMany('investment', {async: true}),
-  payments: DS.hasMany('payment', {async: true}),
-  createdAt: DS.attr('date'),
-  updatedAt: DS.attr('date')
+  payments: DS.hasMany('payment', {async: true})
 });
 
 Lender.reopenClass({
@@ -21,8 +19,10 @@ Lender.reopenClass({
       password: "password",
       passwordConfirmation: "password",
       stateOfResidence: "Oregon",
-      funds: 0,
-      totalInvested: 0
+      funds: 0.0,
+      totalInvested: 0.0,
+      investments: [1,2],
+      payments: [1,2,3]
     },
     {
       id: 2,
@@ -30,8 +30,10 @@ Lender.reopenClass({
       password: "password",
       passwordConfirmation: "password",
       stateOfResidence: "South Carolina",
-      funds: 0,
-      totalInvested: 0
+      funds: 0.0,
+      totalInvested: 0.0,
+      investments: [3,4],
+      payments: [4,5,6]
     },
     {
       id: 3,
@@ -39,8 +41,10 @@ Lender.reopenClass({
       password: "password",
       passwordConfirmation: "password",
       stateOfResidence: "Arizona",
-      funds: 0,
-      totalInvested: 0
+      funds: 0.0,
+      totalInvested: 0.0,
+      investments: [5,6],
+      payments: [7,8,9]
     },
     {
       id: 4,
@@ -48,8 +52,8 @@ Lender.reopenClass({
       password: "password",
       passwordConfirmation: "password",
       stateOfResidence: "Wisconsin",
-      funds: 0,
-      totalInvested: 0
+      funds: 0.0,
+      totalInvested: 0.0
     },
     {
       id: 5,
@@ -57,8 +61,8 @@ Lender.reopenClass({
       password: "password",
       passwordConfirmation: "password",
       stateOfResidence: "North Dakota",
-      funds: 0,
-      totalInvested: 0
+      funds: 0.0,
+      totalInvested: 0.0
     }
   ]
 });

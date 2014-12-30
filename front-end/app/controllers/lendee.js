@@ -14,6 +14,7 @@ export default Ember.ObjectController.extend({
       var streetAddress = this.get("streetAddress");
       if(!firstName || !lastName || !email || !streetAddress){
         alert("Fields can't be empty");
+        this.set("isEditingProfile", true);
       } else{
         this.get("model").save();
       }
