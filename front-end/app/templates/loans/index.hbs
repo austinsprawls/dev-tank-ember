@@ -17,8 +17,11 @@
     <td>${{amountFunded}}</td>
     <td>{{percentageRate}}%</td>
     <td>{{term}} months</td>
-    <td><button class="btn btn-success">Invest</button></td>
+    <td><button type="button" class="btn btn-success" {{action 'showModal' 'invest-modal' this}}>
+      Invest
+    </button></td>
   </tr>
+
 {{/each}}
 </tbody>
 </table>
