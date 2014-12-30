@@ -1,11 +1,26 @@
-{{#each}}
-  <li>
-    {{#link-to 'loan' this}}
-      {{amountRequested}}
-    {{/link-to}}
-  </li>
-{{else}}
-  <h2>There are no notes to browse at this time</h2>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>Amount Requested</th>
+      <th>Amount Remaining</th>
+      <th>Amount Funded</th>
+      <th>Rate</th>
+      <th>Term</th>
+      <th>Invest Now</th>
+    </tr>
+  </thead>
+<tbody>
+{{#each itemController="loan"}}
+  <tr>
+    <td>${{amountRequested}}</td>
+    <td>${{amountRemaining}}</td>
+    <td>${{amountFunded}}</td>
+    <td>{{percentageRate}}%</td>
+    <td>{{term}} months</td>
+    <td><button class="btn btn-success">Invest</button></td>
+  </tr>
 {{/each}}
+</tbody>
+</table>
 
 {{outlet}}
