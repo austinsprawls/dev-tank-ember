@@ -8,7 +8,7 @@ var Router = Ember.Router.extend({
 Router.map(function() {
   this.route('login');
   this.resource('loans', function() {
-    this.resource('loan', {path: '/:loan_id'})
+    this.resource('loan', {path: '/:loan_id'});
   });
   this.resource('contacts', function(){
     this.resource('contact', {path: '/:contact_id'});
