@@ -9,6 +9,7 @@ var Loan = DS.Model.extend({
   rate: DS.attr(),
   term: DS.attr(),
   expirationDate: DS.attr('date'),
+  investments: DS.hasMany('investment', {async: true})
 });
 
 Loan.reopenClass({
@@ -20,7 +21,8 @@ Loan.reopenClass({
       amountRemaining: 12800.0,
       rate: 0.068,
       term: 36,
-      expirationDate: "2018-04-04"
+      expirationDate: "2018-04-04",
+      investments: [1]
     },
     {
       id: 2,
@@ -29,7 +31,8 @@ Loan.reopenClass({
       amountRemaining: 10000.0,
       rate: 0.09,
       term: 12,
-      expirationDate: "2016-01-04"
+      expirationDate: "2016-01-04",
+      investments: [2]
     },
     {
       id: 3,
@@ -38,7 +41,8 @@ Loan.reopenClass({
       amountRemaining: 6789.0,
       rate: 0.075,
       term: 24,
-      expirationDate: "2017-04-04"
+      expirationDate: "2017-04-04",
+      investments: [3]
     }
   ]
 });
