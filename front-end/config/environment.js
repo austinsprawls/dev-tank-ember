@@ -30,7 +30,8 @@ module.exports = function(environment) {
   if (environment === 'test') {
 
     ENV['simple-auth'] = {
-      store: 'simple-auth-session-store:ephemeral'
+      store: 'simple-auth-session-store:ephemeral',
+      authorizer: 'simple-auth-authorizer:devise'
     };
     // Testem prefers this...
     ENV.baseURL = '/';
