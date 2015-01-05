@@ -1,29 +1,54 @@
-<table class="table table-striped">
-  <thead>
-    <tr>
-      <th {{action 'sortByAmountRequested' on="doubleClick"}}>Amount Requested</th>
-      <th {{action 'sortByAmountRemaining' on="doubleClick"}}>Amount Remaining</th>
-      <th {{action 'sortByAmountFunded' on="doubleClick"}}>Amount Funded</th>
-      <th {{action 'sortByRate' on="doubleClick"}}>Rate</th>
-      <th {{action 'sortByTerm' on="doubleClick"}}>Term</th>
-      <th>Invest Now</th>
-    </tr>
-  </thead>
-<tbody>
-{{#each itemController="loan"}}
-  <tr>
-    <td>${{amountRequested}}</td>
-    <td>${{amountRemaining}}</td>
-    <td>${{amountFunded}}</td>
-    <td>{{percentageRate}}%</td>
-    <td>{{term}} months</td>
-    <td><button type="button" class="btn btn-success" {{action 'showModal' 'invest-modal' this}}>
-      Invest
-    </button></td>
-  </tr>
+<div class="row">
 
-{{/each}}
-</tbody>
-</table>
+  <div class="col-md-2">
+    <div class="panel panel-default">
+      <div class="panel-body">
+        <label>Term:</label>
+          <ul>
+            <li>
+              36 month {{input type="checkbox" name="is36TermChecked" checked=is36TermChecked}}
+            </li>
+            <li>
+              24 month {{input type="checkbox" name="is24TermChecked" checked=is24TermChecked}}
+            </li>
+            <li>
+              12 month
+              {{input type="checkbox" checked=is12TermChecked}}
+            </li>
+          </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-md-10">
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th {{action 'sortByAmountRequested' on="doubleClick"}}>Amount Requested</th>
+          <th {{action 'sortByAmountRemaining' on="doubleClick"}}>Amount Remaining</th>
+          <th {{action 'sortByAmountFunded' on="doubleClick"}}>Amount Funded</th>
+          <th {{action 'sortByRate' on="doubleClick"}}>Rate</th>
+          <th {{action 'sortByTerm' on="doubleClick"}}>Term</th>
+          <th>Invest Now</th>
+        </tr>
+      </thead>
+    <tbody>
+    {{#each itemController="loan"}}
+      <tr>
+        <td>${{amountRequested}}</td>
+        <td>${{amountRemaining}}</td>
+        <td>${{amountFunded}}</td>
+        <td>{{percentageRate}}%</td>
+        <td>{{term}} months</td>
+        <td><button type="button" class="btn btn-success" {{action 'showModal' 'invest-modal' this}}>
+          Invest
+        </button></td>
+      </tr>
+
+    {{/each}}
+    </tbody>
+    </table>
+  </div>
+</div>
 
 {{outlet}}

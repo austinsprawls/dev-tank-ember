@@ -25,6 +25,7 @@ module.exports = function(environment) {
     // ENV.APP.LOG_TRANSITIONS = true;
     // ENV.APP.LOG_TRANSITIONS_INTERNAL = true;
     ENV.APP.LOG_VIEW_LOOKUPS = true;
+
   }
 
   if (environment === 'test') {
@@ -46,7 +47,8 @@ module.exports = function(environment) {
 
   if (environment === 'production') {
     ENV['simple-auth'] = {
-      serverTokenRevocationEndpoint: '/revoke'
+      serverTokenRevocationEndpoint: '/revoke',
+      authorizer: 'simple-auth-authorizer:devise'
     };
   }
 
