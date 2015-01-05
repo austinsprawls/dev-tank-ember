@@ -16,7 +16,16 @@ export default Ember.ObjectController.extend({
         alert("Fields can't be empty");
         this.set("isEditingProfile", true);
       } else{
-        this.get("model").save();
+        var lendee = this.get("model");
+
+        lendee.setProperties({
+          firstName: firstName,
+          lastName: lastName,
+          email: email,
+          streetAddress: streetAddress
+        });
+        lendee.save();
+        console.log(lendee.get('firstName'));
       }
     }
   }

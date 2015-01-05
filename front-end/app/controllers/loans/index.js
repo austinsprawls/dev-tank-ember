@@ -47,18 +47,23 @@ export default Ember.ArrayController.extend({
 
   actions: {
     sortByAmountRequested: function() {
+      this.toggleProperty('sortAscending');
       this.set('sortProperties', ['amountRequested']);
     },
     sortByAmountRemaining: function() {
+      this.toggleProperty('sortAscending');
       this.set('sortProperties', ['amountRemaining']);
     },
     sortByAmountFunded: function() {
+      this.toggleProperty('sortAscending');
       this.set('sortProperties', ['amountFunded']);
     },
     sortByRate: function() {
+      this.toggleProperty('sortAscending');
       this.set('sortProperties', ['rate']);
     },
     sortByTerm: function() {
+      this.toggleProperty('sortAscending');
       this.set('sortProperties', ['term']);
     }
   }
