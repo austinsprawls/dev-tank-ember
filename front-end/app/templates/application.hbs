@@ -19,9 +19,9 @@
       </ul>
       <ul class="nav navbar-nav navbar-right">
         {{#if session.isAuthenticated}}
-          <li><button {{ action 'invalidateSession' }} class="btn btn-success">Logout</button></li>
+          <li><button {{ action 'invalidateSession' }} class="btn btn-warning">Logout</button></li>
         {{else}}
-          <li>{{#link-to 'login'}}Login{{/link-to}}</li>
+          <li>{{#link-to 'login'}}<button class="btn btn-success">Login</button>{{/link-to}}</li>
         {{/if}}
 
       </ul>
