@@ -14,12 +14,12 @@
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
-        
+
         <li>{{link-to 'Browse Notes' 'loans'}}</li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
         {{#if session.isAuthenticated}}
-          <li>{{ action 'invalidateSession' }}Logout</li>
+          <li><button {{ action 'invalidateSession' }} class="btn btn-success">Logout</button></li>
         {{else}}
           <li>{{#link-to 'login'}}Login{{/link-to}}</li>
         {{/if}}
