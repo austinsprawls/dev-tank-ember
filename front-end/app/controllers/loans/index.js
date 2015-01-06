@@ -6,37 +6,30 @@ export default Ember.ArrayController.extend({
   is12TermChecked: true,
   filterResults: function() {
     if(!this.get('is12TermChecked') && !this.get('is24TermChecked') && !this.get('is36TermChecked')){
-      console.log('first option');
       return this.set('model', this.store.filter('loan', function(loan){
         return loan.get('term') !== 12 && loan.get('term') !== 24 && loan.get('term') !== 36;
       }));
     } else if (!this.get('is12TermChecked') && !this.get('is24TermChecked')) {
-      console.log('second option');
       return this.set('model', this.store.filter('loan', function(loan){
         return loan.get('term') !== 12 && loan.get('term') !== 24;
       }));
     } else if (!this.get('is12TermChecked') && !this.get('is36TermChecked')) {
-      console.log('third option');
       return this.set('model', this.store.filter('loan', function(loan){
         return loan.get('term') !== 12 && loan.get('term') !== 36;
       }));
     } else if (!this.get('is24TermChecked') && !this.get('is36TermChecked')) {
-      console.log('fourth option');
       return this.set('model', this.store.filter('loan', function(loan){
         return loan.get('term') !== 24 && loan.get('term') !== 36;
       }));
     } else if (!this.get('is12TermChecked')) {
-      console.log('fifth option');
       return this.set('model', this.store.filter('loan', function(loan){
         return loan.get('term') !== 12;
       }));
     } else if (!this.get('is24TermChecked')) {
-      console.log('sixth option');
       return this.set('model', this.store.filter('loan', function(loan){
         return loan.get('term') !== 24;
       }));
     } else if (!this.get('is36TermChecked')) {
-      console.log('seventh option');
       return this.set('model', this.store.filter('loan', function(loan){
         return loan.get('term') !==36;
       }));
@@ -55,15 +48,15 @@ export default Ember.ArrayController.extend({
       this.set('sortProperties', ['amountRemaining']);
     },
     sortByAmountFunded: function() {
-      this.toggleProperty('sortAscending');
+      this.toggleProperty('amountFundedOrder');
       this.set('sortProperties', ['amountFunded']);
     },
     sortByRate: function() {
-      this.toggleProperty('sortAscending');
+      this.toggleProperty('rateOrder');
       this.set('sortProperties', ['rate']);
     },
     sortByTerm: function() {
-      this.toggleProperty('sortAscending');
+      this.toggleProperty('termOrder');
       this.set('sortProperties', ['term']);
     }
   }
