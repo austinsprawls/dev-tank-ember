@@ -8,9 +8,12 @@ export default Ember.Controller.extend({
     createInvestment: function() {
       var loan = this.get('loan'),
       investmentAmount = this.get('investmentAmount'),
-      amountRequested = loan.get('amountRequested'),
-      _this = this;
-      if (!investmentAmount.trim()) {return this.investmentFailure();}
+      amountRequested = loan.get('amountRequested');
+      if (!investmentAmount.trim() ||
+         isNaN(investmentAmount) ||
+         amountRequested - investmentAmount < 0) {
+        return this.investmentFailure();
+      }
 
       var investment = this.store.createRecord('investment', {
         loan: loan,
