@@ -8,10 +8,11 @@ export default Ember.Controller.extend({
     createInvestment: function() {
       var loan = this.get('loan'),
       investmentAmount = this.get('investmentAmount'),
-      amountRequested = loan.get('amountRequested');
+      amountRequested = loan.get('amountRequested'),
+      amountRemaining = loan.get('amountRemaining');
       if (!investmentAmount.trim() ||
          isNaN(investmentAmount) ||
-         amountRequested - investmentAmount < 0) {
+         amountRemaining - investmentAmount < 0) {
         return this.investmentFailure();
       }
 
@@ -29,6 +30,7 @@ export default Ember.Controller.extend({
         this.transitionToRoute('loans.index');
         this.investmentSuccess(investmentAmount);
       }else{
+        console.log('didnt save');
         this.investmentFailure();
       }
 
