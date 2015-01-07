@@ -10,7 +10,7 @@ export default Ember.Controller.extend({
       investmentAmount = this.get('investmentAmount'),
       amountRequested = loan.get('amountRequested'),
       _this = this;
-      if (!investmentAmount.trim()) {return;}
+      if (!investmentAmount.trim()) {return this.investmentFailure();}
 
       var investment = this.store.createRecord('investment', {
         loan: loan,
@@ -22,15 +22,21 @@ export default Ember.Controller.extend({
 
       this.set('investmentAmount', '');
 
-      investment.save().then(function() {
-        _this.transitionToRoute('loans.index');
-        _this.investmentSubmitted(investmentAmount);
-      });
+      if (investment.save()) {
+        this.transitionToRoute('loans.index');
+        this.investmentSuccess(investmentAmount);
+      }else{
+        this.investmentFailure();
+      }
+
     },
   },
 
-  investmentSubmitted: function(investmentAmount) {
+  investmentSuccess: function(investmentAmount) {
     this.flashMessage('success',
      'Congratulations. You invested $' + investmentAmount + '.');
+  },
+  investmentFailure: function() {
+    this.flashMessage('danger', 'Oops! Something went wrong. Please try again.');
   }
 });
