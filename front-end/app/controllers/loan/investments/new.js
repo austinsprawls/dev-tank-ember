@@ -1,24 +1,34 @@
 import Ember from 'ember';
 
 export default Ember.Controller.extend({
+  needs: 'loan',
+  loanId: Ember.computed.alias('controllers.loan.id'),
   actions: {
-    createInvestment: function(loan) {
+    createInvestment: function() {
+      console.log(this.get("loanId"));
       var investmentAmount = this.get('investmentAmount');
-      if (!title.trim()) {return;}
+      if (!investmentAmount.trim()) {return;}
 
-        var investment = this.store.createRecord('investment', {
-          lender: 1,
-          loan: loan.id,
-          amount: investmentAmount,
-          expectedReturn: investmentAmount*loan.rate
-        });
+      var investment = this.store.createRecord('investment', {
+        amount: investmentAmount,
+        expectedReturn: 1000
+      });
 
-        this.set('investmentAmount', '');
+      this.store.find('lender', 1).then(function(lender) {
+        investment.set('lender', lender);
+      });
 
-        investment.save();
+      this.store.find('loan', this.get("loanId")).then(function(loan){
+        investment.set('loan', loan);
+      });
 
-        transitionToRoute('loans.index');
-      }
+      // this.store.find('loan', this.get("loanId")).set('amountRemaining', amountRequested-investmentAmount);
+
+      this.set('investmentAmount', '');
+
+      investment.save();
+
+      this.transitionToRoute('loans.index');
     }
-  });
-  
+  }
+});
