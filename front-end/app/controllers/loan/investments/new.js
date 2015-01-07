@@ -2,33 +2,35 @@ import Ember from 'ember';
 
 export default Ember.Controller.extend({
   needs: 'loan',
-  loanId: Ember.computed.alias('controllers.loan.id'),
+  loan: Ember.computed.alias('controllers.loan.model'),
+
   actions: {
     createInvestment: function() {
-      console.log(this.get("loanId"));
-      var investmentAmount = this.get('investmentAmount');
+      var loan = this.get('loan'),
+      investmentAmount = this.get('investmentAmount'),
+      amountRequested = loan.get('amountRequested'),
+      _this = this;
       if (!investmentAmount.trim()) {return;}
 
       var investment = this.store.createRecord('investment', {
+        loan: loan,
         amount: investmentAmount,
-        expectedReturn: 1000
+        expectedReturn: investmentAmount*loan.get('rate')
       });
 
-      this.store.find('lender', 1).then(function(lender) {
-        investment.set('lender', lender);
-      });
-
-      this.store.find('loan', this.get("loanId")).then(function(loan){
-        investment.set('loan', loan);
-      });
-
-      // this.store.find('loan', this.get("loanId")).set('amountRemaining', amountRequested-investmentAmount);
+      loan.set('amountRemaining', amountRequested-investmentAmount );
 
       this.set('investmentAmount', '');
 
-      investment.save();
+      investment.save().then(function() {
+        _this.transitionToRoute('loans.index');
+        _this.investmentSubmitted(investmentAmount);
+      });
+    },
+  },
 
-      this.transitionToRoute('loans.index');
-    }
+  investmentSubmitted: function(investmentAmount) {
+    this.flashMessage('success',
+     'Congratulations. You invested $' + investmentAmount + '.');
   }
 });

@@ -9,7 +9,7 @@ Router.map(function() {
   this.route('login');
   this.resource('loans', function() {
     this.resource('loan', {path: '/:loan_id'}, function(){
-      this.route('investments.new', {path: '/investments/new'})
+      this.route('investments.new', {path: '/investments/new'});
     });
   });
   this.resource('contacts', function(){
