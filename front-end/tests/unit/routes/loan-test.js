@@ -6,12 +6,6 @@ import {
 import startApp from '../../helpers/start-app';
 var App;
 
-var promise = new Ember.RSVP.Promise(function(resolve){
-  setTimeout(function(){
-    Ember.run(this, resolve, 'hello world');
-  }, 20);
-});
-
 moduleFor('route:loan', 'LoanRoute', {
   // Specify the other units that are required for this test.
   // needs: ['controller:foo']
@@ -20,13 +14,13 @@ moduleFor('route:loan', 'LoanRoute', {
     App = startApp();
   },
   teardown: function() {
-    Ember.run(App, App.destroy());
+    App.reset();
   }
 });
 
 Ember.run(function(){
   test('loan path goes to loan', function() {
-    expect(2);
+    expect(1);
 
     visit('/loans/1');
     andThen(function(){

@@ -2,10 +2,10 @@ import {
   moduleFor,
   test
 } from 'ember-qunit';
-import startApp from '../../helpers/start-app';
+import startApp from '../../../helpers/start-app';
 var App;
 
-moduleFor('route:lender', 'LenderRoute', {
+moduleFor('route:loans/index', 'LoansIndexRoute', {
   // Specify the other units that are required for this test.
   // needs: ['controller:foo']
   setup: function(){
@@ -21,12 +21,9 @@ test('it exists', function() {
   ok(route);
 });
 
-test('redirect to login if not authenticated', function() {
-  visit('/lenders/1');
-
+test('it lists three loans', function() {
+  visit('/loans');
   andThen(function() {
-    equal(currentRouteName(), 'login');
-    equal(currentPath(), 'login');
-    equal(currentURL(), '/login');
+    equal(find('ul.loan li').length,3);
   });
 });

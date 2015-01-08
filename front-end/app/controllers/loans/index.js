@@ -6,37 +6,34 @@ export default Ember.ArrayController.extend({
   is12TermChecked: true,
   filterResults: function() {
     if(!this.get('is12TermChecked') && !this.get('is24TermChecked') && !this.get('is36TermChecked')){
-      return this.set('model', this.store.filter('loan', function(loan){
-        return loan.get('term') !== 12 && loan.get('term') !== 24 && loan.get('term') !== 36;
-      }));
+      this.setFilter([12,24,36]);
     } else if (!this.get('is12TermChecked') && !this.get('is24TermChecked')) {
-      return this.set('model', this.store.filter('loan', function(loan){
-        return loan.get('term') !== 12 && loan.get('term') !== 24;
-      }));
+      this.setFilter([12,36]);
     } else if (!this.get('is12TermChecked') && !this.get('is36TermChecked')) {
-      return this.set('model', this.store.filter('loan', function(loan){
-        return loan.get('term') !== 12 && loan.get('term') !== 36;
-      }));
+      this.setFilter([12,36]);
     } else if (!this.get('is24TermChecked') && !this.get('is36TermChecked')) {
-      return this.set('model', this.store.filter('loan', function(loan){
-        return loan.get('term') !== 24 && loan.get('term') !== 36;
-      }));
+      this.setFilter([24,36]);
     } else if (!this.get('is12TermChecked')) {
-      return this.set('model', this.store.filter('loan', function(loan){
-        return loan.get('term') !== 12;
-      }));
+      this.setFilter([12]);
     } else if (!this.get('is24TermChecked')) {
-      return this.set('model', this.store.filter('loan', function(loan){
-        return loan.get('term') !== 24;
-      }));
+      this.setFilter([24]);
     } else if (!this.get('is36TermChecked')) {
-      return this.set('model', this.store.filter('loan', function(loan){
-        return loan.get('term') !==36;
-      }));
+      this.setFilter([36]);
     } else {
       return this.set('model', this.store.find('loan'));
     }
   }.observes('is36TermChecked', 'is24TermChecked', 'is12TermChecked'),
+  setFilter: function(filters) {
+    return this.set('model', this.store.filter('loan', function(loan) {
+      if(filters.length===3){
+        return loan.get('term') !== filters[0] && loan.get('term') !== filters[1] && loan.get('term') !== filters[2];
+      } else if(filters.length===2) {
+        return loan.get('term') !== filters[0] && loan.get('term') !== filters[1];
+      } else if(filters.length===1){
+        return loan.get('term') !== filters[0];
+      }
+    }));
+  },
 
   actions: {
     sortByAmountRequested: function() {
