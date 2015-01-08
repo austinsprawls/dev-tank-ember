@@ -30,3 +30,15 @@ test('redirect to login if not authenticated', function() {
     equal(currentURL(), '/login');
   });
 });
+
+test('allow signed in users to access page', function() {
+  visit('/login');
+  fillIn('#identification', 'letme');
+  fillIn('#password', 'in');
+  click('.btn-primary');
+  visit('/lendees/1');
+
+  andThen(function() {
+    equal(currentURL(), '/lendees/1')
+  });
+});

@@ -27,3 +27,25 @@ test('it lists three loans', function() {
     equal(find('ul.loan li').length,3);
   });
 });
+
+test('redirect unauthenticated users to login', function() {
+  visit('/loans');
+
+  andThen(function(){
+    equal(currentURL(), '/login');
+    equal(currentRouteName(), 'login');
+    equal(currentPath(), 'login');
+  });
+});
+
+test('allow authenticated users to view loans', function() {
+  visit('/login');
+  fillIn('#identification', 'letme');
+  fillIn('#password', 'in');
+  click('.btn-primary');
+  visit('/loans');
+
+  andThen(function() {
+    equal(currentURL(), '/loans');
+  });
+});
