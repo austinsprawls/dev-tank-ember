@@ -1,6 +1,9 @@
 import Ember from 'ember';
 
 export default Ember.ObjectController.extend({
+  investments: function(){
+    return this.get('model.investments');
+  }.property('model.investments'),
   isEditingProfile: false,
   actions: {
     editProfile: function() {

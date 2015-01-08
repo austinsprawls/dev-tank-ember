@@ -30,6 +30,7 @@ Router.map(function() {
   this.resource('lender.investments', {path: '/lenders/:lender_id/investments'}, function(){
     this.resource('lender.investment', {path: '/:investment_id'});
   });
+  this.route('lendee/investments');
 });
 
 export default Router;

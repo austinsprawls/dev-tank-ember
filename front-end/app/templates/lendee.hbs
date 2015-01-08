@@ -1,3 +1,4 @@
+
 <div class="lendee-bio">
   {{#if isEditingProfile}}
     <label>First Name: </label>{{input type="text" value=firstName}}
@@ -11,4 +12,32 @@
     <p>{{streetAddress}}, {{city}}, {{state}} {{zipCode}}</p>
     <button class="btn btn-primary" {{action "editProfile"}}>Edit Profile</button>
   {{/if}}
+</div>
+
+<br>
+
+<div class="row">
+  <div class="col-md-8">
+    <div class="panel panel-info">
+      <div class="panel-heading">
+        <h2 class="panel-title">Investor Activity</h2>
+      </div>
+      <div class="panel-body">
+        <table class="table table-striped">
+          <tr>
+            <td>Date</td>
+            <td>Amount</td>
+          </tr>
+          {{#each investment in investments}}
+            <tr>
+              <td>{{investment.createdAt}}</td>
+              <td>+ ${{investment.amount}}</td>
+            </tr>
+          {{/each}}
+        </table>
+        {{#link-to 'lendee.investments.index'}}View All Investments{{/link-to}}
+      </div>
+    </div>
+
+  </div>
 </div>
