@@ -25,12 +25,12 @@
       <div class="panel-body">
         <table class="table table-striped">
           <tr>
-            <td>Date</td>
-            <td>Amount</td>
+            <th>Date</th>
+            <th>Amount</th>
           </tr>
           {{#each investment in investments}}
             <tr>
-              <td>{{investment.createdAt}}</td>
+              <td>{{moment investment.createdAt}}</td>
               <td>+ ${{investment.amount}}</td>
             </tr>
           {{/each}}

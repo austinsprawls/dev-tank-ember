@@ -22,16 +22,18 @@ Investment.reopenClass({
     {
       id: 2,
       lender: 2,
-      loan: 2,
+      loan: 1,
       amount: 1000.0,
       expectedReturn: 90.0,
+      createdAt: Date.now()
     },
     {
       id: 3,
       lender: 3,
-      loan: 3,
+      loan: 1,
       amount: 3050.0,
-      expectedReturn: 250.0
+      expectedReturn: 250.0,
+      createdAt: Date.now()
     },
     {
       id: 4,
@@ -53,6 +55,30 @@ Investment.reopenClass({
       id: 6,
       lender: 3,
       loan: 2,
+      amount: 690.0,
+      expectedReturn: 75.0,
+      createdAt: Date.now()
+    },
+    {
+      id: 7,
+      lender: 1,
+      loan: 3,
+      amount: 1250.0,
+      expectedReturn: 130.0,
+      createdAt: Date.now()
+    },
+    {
+      id: 8,
+      lender: 2,
+      loan: 3,
+      amount: 1800.0,
+      expectedReturn: 198.03,
+      createdAt: Date.now()
+    },
+    {
+      id: 9,
+      lender: 3,
+      loan: 3,
       amount: 690.0,
       expectedReturn: 75.0,
       createdAt: Date.now()

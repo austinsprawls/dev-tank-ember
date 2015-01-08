@@ -25,14 +25,12 @@ moduleFor('route:loan', 'LoanRoute', {
 });
 
 Ember.run(function(){
-  promise.then(function(result){
-    test('loan path goes to loan', function() {
-      expect(1);
+  test('loan path goes to loan', function() {
+    expect(2);
 
-      visit('/loans/1');
-      andThen(function(){
-        equal(currentRouteName(), 'loan.index');
-      });
+    visit('/loans/1');
+    andThen(function(){
+      equal(currentRouteName(), 'loan.index');
     });
   });
 });
