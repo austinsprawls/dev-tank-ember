@@ -20,7 +20,7 @@ Lender.reopenClass({
       passwordConfirmation: "password",
       stateOfResidence: "Oregon",
       funds: 0.0,
-      totalInvested: 0.0,
+      totalInvested: 3500.0,
       investments: [1,2],
       payments: [1,2,3]
     },
@@ -31,7 +31,7 @@ Lender.reopenClass({
       passwordConfirmation: "password",
       stateOfResidence: "South Carolina",
       funds: 0.0,
-      totalInvested: 0.0,
+      totalInvested: 5053.0,
       investments: [3,4],
       payments: [4,5,6]
     },
@@ -42,7 +42,7 @@ Lender.reopenClass({
       passwordConfirmation: "password",
       stateOfResidence: "Arizona",
       funds: 0.0,
-      totalInvested: 0.0,
+      totalInvested: 2038.0,
       investments: [5,6],
       payments: [7,8,9]
     },
