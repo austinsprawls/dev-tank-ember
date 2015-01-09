@@ -31,6 +31,7 @@ Router.map(function() {
     this.resource('lender.investment', {path: '/:investment_id'});
   });
   this.route('lendee/investments');
+  this.route('check-rate');
 });
 
 export default Router;
