@@ -31,6 +31,4 @@ test('estimatedRate function depends on selectedCredit property', function() {
   controller.set('selectedCredit', controller.get('creditScores')[3]);
   equal(controller.get('selectedCredit'), '720-850');
   equal(controller.get('estimatedRate'), '6.78%');
-
-
 });
