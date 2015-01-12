@@ -8,7 +8,7 @@ export default Ember.ArrayController.extend({
     if(!this.get('is12TermChecked') && !this.get('is24TermChecked') && !this.get('is36TermChecked')){
       this.setFilter([12,24,36]);
     } else if (!this.get('is12TermChecked') && !this.get('is24TermChecked')) {
-      this.setFilter([12,36]);
+      this.setFilter([12,24]);
     } else if (!this.get('is12TermChecked') && !this.get('is36TermChecked')) {
       this.setFilter([12,36]);
     } else if (!this.get('is24TermChecked') && !this.get('is36TermChecked')) {
