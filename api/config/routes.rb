@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   devise_for :lenders
-  devise_for :lendees
+  devise_for :lendees, controllers: { sessions: 'sessions' }
   mount API::Base, at: "/"
   mount GrapeSwaggerRails::Engine, at: "/documentation"
   devise_for :admin_users, ActiveAdmin::Devise.config

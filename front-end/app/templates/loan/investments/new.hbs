@@ -1,0 +1,10 @@
+<h3>Create New Investment</h3>
+
+
+<form>
+  <label>Amount to invest:</label>
+  {{input type="text" placeholder="How much do you want to invest?"
+  value=investmentAmount action="createInvestment" class="form-control"}}
+  <br>
+  <button class="btn btn-success" {{action 'createInvestment' loan}}>Invest Now</button>
+</form>

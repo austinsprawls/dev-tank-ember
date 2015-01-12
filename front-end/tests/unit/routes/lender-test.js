@@ -2,13 +2,43 @@ import {
   moduleFor,
   test
 } from 'ember-qunit';
+import startApp from '../../helpers/start-app';
+var App;
 
 moduleFor('route:lender', 'LenderRoute', {
   // Specify the other units that are required for this test.
   // needs: ['controller:foo']
+  setup: function(){
+    App = startApp();
+  },
+  teardown: function() {
+    App.reset();
+  }
 });
 
 test('it exists', function() {
   var route = this.subject();
   ok(route);
+});
+
+test('redirect to login if not authenticated', function() {
+  visit('/lenders/1');
+
+  andThen(function() {
+    equal(currentRouteName(), 'login');
+    equal(currentPath(), 'login');
+    equal(currentURL(), '/login');
+  });
+});
+
+test('allow signed in users to access page', function() {
+  visit('/login');
+  fillIn('#identification', 'letme');
+  fillIn('#password', 'in');
+  click('.btn-primary');
+  visit('/lenders/1');
+
+  andThen(function() {
+    equal(currentURL(), '/lenders/1')
+  });
 });

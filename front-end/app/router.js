@@ -7,6 +7,11 @@ var Router = Ember.Router.extend({
 
 Router.map(function() {
   this.route('login');
+  this.resource('loans', function() {
+    this.resource('loan', {path: '/:loan_id'}, function(){
+      this.route('investments.new', {path: '/investments/new'});
+    });
+  });
   this.resource('contacts', function(){
     this.resource('contact', {path: '/:contact_id'});
   });
@@ -25,6 +30,7 @@ Router.map(function() {
   this.resource('lender.investments', {path: '/lenders/:lender_id/investments'}, function(){
     this.resource('lender.investment', {path: '/:investment_id'});
   });
+  this.route('check-rate');
 });
 
 export default Router;

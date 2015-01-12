@@ -19,19 +19,21 @@ module.exports = function(environment) {
     }
   };
 
+  ENV['simple-auth-oauth2'] = {
+    serverTokenRevocationEndpoint: '/revoked'
+  };
+
   if (environment === 'development') {
     // ENV.APP.LOG_RESOLVER = true;
     ENV.APP.LOG_ACTIVE_GENERATION = true;
     // ENV.APP.LOG_TRANSITIONS = true;
     // ENV.APP.LOG_TRANSITIONS_INTERNAL = true;
     ENV.APP.LOG_VIEW_LOOKUPS = true;
+
   }
 
   if (environment === 'test') {
 
-    ENV['simple-auth'] = {
-      store: 'simple-auth-session-store:ephemeral'
-    };
     // Testem prefers this...
     ENV.baseURL = '/';
     ENV.locationType = 'none';
@@ -41,12 +43,13 @@ module.exports = function(environment) {
     ENV.APP.LOG_VIEW_LOOKUPS = false;
 
     ENV.APP.rootElement = '#ember-testing';
+
+    ENV['simple-auth'] = {
+      store: 'simple-auth-session-store:ephemeral'
+    };
   }
 
   if (environment === 'production') {
-    ENV['simple-auth'] = {
-      serverTokenRevocationEndpoint: '/revoke'
-    };
   }
 
   return ENV;

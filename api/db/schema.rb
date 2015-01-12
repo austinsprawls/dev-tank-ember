@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141222175722) do
+ActiveRecord::Schema.define(version: 20150102163247) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -90,6 +90,7 @@ ActiveRecord::Schema.define(version: 20141222175722) do
     t.string   "credit_range"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "authentication_token"
   end
 
   add_index "lendees", ["email"], name: "index_lendees_on_email", unique: true, using: :btree
@@ -136,7 +137,7 @@ ActiveRecord::Schema.define(version: 20141222175722) do
     t.integer  "months_paid", default: 0
     t.float    "amount_paid", default: 0.0
     t.boolean  "paid?",       default: false
-    t.date     "due_date",    default: '2015-01-29'
+    t.date     "due_date",    default: '2015-02-02'
     t.datetime "created_at"
     t.datetime "updated_at"
   end
