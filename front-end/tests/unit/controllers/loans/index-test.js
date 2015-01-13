@@ -90,7 +90,7 @@ test("sortByTerm action sorts properties by loan's term property", function(){
 test('setFilter function returns the proper loan Array model based on specified filters', function(){
   var ctrl = this.subject(),
       firstLoan,
-      ctrlModel = ctrl.set('model', Ember.Array([
+      ctrlModel = ctrl.set('model', Ember.A([
         Ember.Object.create({term: 36}),
         Ember.Object.create({term: 12}),
         Ember.Object.create({term: 24})

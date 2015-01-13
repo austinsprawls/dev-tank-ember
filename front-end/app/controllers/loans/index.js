@@ -1,39 +1,36 @@
 import Ember from 'ember';
 
 export default Ember.ArrayController.extend({
+  itemController: 'loan',
   is36TermChecked: true,
   is24TermChecked: true,
   is12TermChecked: true,
-  filterResults: function() {
-    if(!this.get('is12TermChecked') && !this.get('is24TermChecked') && !this.get('is36TermChecked')){
-      this.setFilter([12,24,36]);
-    } else if (!this.get('is12TermChecked') && !this.get('is24TermChecked')) {
-      this.setFilter([12,24]);
-    } else if (!this.get('is12TermChecked') && !this.get('is36TermChecked')) {
-      this.setFilter([12,36]);
-    } else if (!this.get('is24TermChecked') && !this.get('is36TermChecked')) {
-      this.setFilter([24,36]);
-    } else if (!this.get('is12TermChecked')) {
-      this.setFilter([12]);
-    } else if (!this.get('is24TermChecked')) {
-      this.setFilter([24]);
-    } else if (!this.get('is36TermChecked')) {
-      this.setFilter([36]);
-    } else {
-      return this.set('model', this.store.find('loan'));
-    }
-  }.observes('is36TermChecked', 'is24TermChecked', 'is12TermChecked'),
-  setFilter: function(filters) {
-    return this.set('model', this.store.filter('loan', function(loan) {
-      if(filters.length===3){
-        return loan.get('term') !== filters[0] && loan.get('term') !== filters[1] && loan.get('term') !== filters[2];
-      } else if(filters.length===2) {
-        return loan.get('term') !== filters[0] && loan.get('term') !== filters[1];
-      } else if(filters.length===1){
-        return loan.get('term') !== filters[0];
+
+  filteredLoans: function(){
+    var loans = this.store.all('loan');
+    var selectedTerms = [this.get('is12TermChecked'), this.get('is24TermChecked'), this.get('is36TermChecked')];
+    if(selectedTerms.without(false).length === 3) {
+      return this.set('model', loans);
+    } else if (selectedTerms.without(false).length === 2) {
+      if (selectedTerms.indexOf(false) === 0) {
+        return this.set('model',loans.rejectBy('term', 12));
+      } else if (selectedTerms.indexOf(false) === 1) {
+        return this.set('model', loans.rejectBy('term', 24));
+      } else if (selectedTerms.indexOf(false) === 2) {
+        return this.set('model', loans.rejectBy('term', 36));
       }
-    }));
-  },
+    } else if (selectedTerms.without(false).length === 1) {
+      if (selectedTerms.indexOf(true) === 0) {
+        return this.set( 'model', loans.filterBy('term', 12));
+      } else if (selectedTerms.indexOf(true) === 1) {
+        return this.set('model', loans.filterBy('term', 24));
+      } else if (selectedTerms.indexOf(true) === 2) {
+        return this.set('model', loans.filterBy('term', 36));
+      }
+    } else {
+      return this.set('model',[]);
+    }
+  }.observes('is12TermChecked', 'is24TermChecked', 'is36TermChecked'),
 
   actions: {
     sortByAmountRequested: function() {
